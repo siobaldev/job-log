@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "GT Pressura Mono";
+  src: url("@/assets/fonts/GT-Pressura-Mono.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* Custom Font */
+  --font-mono: "GT Pressura Mono", sans-serif;
+
+  /* Primitive */
+  --color-brand-brown: #6f4630;
+
+  /* Surfaces */
+  --color-bg-main: #f1e9da;
+  --color-bg-elevated: #fbf6ec;
+  --color-bg-input: #f6efe2;
+
+  /* Borders */
+  --color-border-default: #d8c6a8;
+  --color-border-hover: var(--color-brand-brown);
+
+  /* Typography */
+  --color-text-main: #6b5842;
+  --color-text-inverse: var(--color-bg-elevated);
+
+  /* Interactive Components */
+  --color-btn-bg: var(--color-brand-brown);
+
+  /* Badges */
+  --color-badge-bg-all: #dac0a7;
+  --color-badge-bg-saved: #afc8cc;
+  --color-badge-bg-applied: #e9d28c;
+  --color-badge-bg-interview: #e7a868;
+  --color-badge-bg-offer: #c9d9a8;
+  --color-badge-bg-rejected: #e3b4aa;
+
+  /* Badge Text */
+  --color-badge-text: var(--color-text-main);
+}
