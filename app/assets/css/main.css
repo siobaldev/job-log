@@ -27,6 +27,7 @@
   /* Typography */
   --color-text-main: #6b5842;
   --color-text-inverse: var(--color-bg-elevated);
+  --text-title: clamp(1.75rem, 1.543rem + 0.884vw, 2.25rem);
 
   /* Interactive Components */
   --color-btn-bg: var(--color-brand-brown);
@@ -41,4 +42,57 @@
 
   /* Badge Text */
   --color-badge-text: var(--color-text-main);
+
+  /* Feedback Tones (Alerts, Validation, Statuses) */
+  --color-destruction: #b33939;
+  --color-success: #3b7a57;
+}
+
+body {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+}
+
+@layer components {
+  .field-label {
+    display: block;
+    margin-bottom: calc(var(--spacing) * 1.5);
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-main);
+  }
+
+  .field-input {
+    width: 100%;
+    padding: calc(var(--spacing) * 3) calc(var(--spacing) * 4);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg-input);
+    color: var(--color-text-main);
+
+    &::placeholder {
+      color: color-mix(in oklab, var(--color-text-main) 40%, transparent);
+    }
+
+    &:focus {
+      border-color: var(--color-border-hover);
+      outline: 3px solid color-mix(in oklab, var(--color-border-hover) 10%, transparent);
+    }
+
+    &[aria-invalid="true"] {
+      border-color: var(--color-destruction);
+
+      &:focus {
+        outline-color: color-mix(in oklab, var(--color-destruction) 10%, transparent);
+      }
+    }
+  }
+
+  .field-error {
+    margin-top: calc(var(--spacing) * 1);
+    font-size: var(--text-sm);
+    line-height: var(--text-sm--line-height);
+    color: var(--color-destruction);
+  }
 }
