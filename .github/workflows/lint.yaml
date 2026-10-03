@@ -8,6 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      NUXT_PUBLIC_SUPABASE_URL: https://supabase.co
+      NUXT_PUBLIC_SUPABASE_KEY: placeholder-anon-key-here
 
     steps:
       - uses: actions/checkout@v7
