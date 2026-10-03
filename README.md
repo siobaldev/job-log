@@ -1,75 +1,35 @@
-# Nuxt Minimal Starter
+# Job Log
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Description
 
-## Setup
+ob Log is a personal job-application tracker and automation tool. Paste
+a job posting, and it extracts the company, role, location, salary, and
+requirements automatically. Every entry is tracked through a status
+pipeline (Saved → Applied → Interview → Offer/Rejected), with a tailored
+application email and optional cover letter generated per job, in a
+tone you choose: casual, semi-formal, or formal.
+ 
+The project also doubles as a public portfolio piece: it runs a public
+demo profile with sample data for anyone to try. The real, owner-only
+profile (gated behind a single authenticated account) uses live data
+and a different AI provider under the hood, without exposing real
+job-search data or API costs to visitors.
 
-Make sure to install dependencies:
 
-```bash
-# npm
-npm install
+## Tech Stack
 
-# pnpm
-pnpm install
+**Frontend**
+- [Nuxt 4](https://nuxt.com) — Vue 3, Composition API, `<script setup>`
+- [Tailwind CSS v4](https://tailwindcss.com) — CSS-first config via `@theme`, no `tailwind.config.ts`
+- [reka-ui](https://reka-ui.com) — unstyled, accessible component primitives
+- [vee-validate](https://vee-validate.logaretm.com) + [Zod](https://zod.dev) — form state and schema validation
 
-# yarn
-yarn install
+**Backend / Data**
+- [Supabase](https://supabase.com) — Postgres database, Auth, and file storage
+- Nuxt server routes (Nitro) — server-side AI calls, keeping API keys off the client
 
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+**Tooling**
+- [pnpm](https://pnpm.io) — package manager
+- [Vitest](https://vitest.dev) + [@nuxt/test-utils](https://nuxt.com/docs/getting-started/testing) + [@vue/test-utils](https://test-utils.vuejs.org) — testing
+- [ESLint](https://eslint.org) (`@nuxt/eslint`) — linting
+- GitHub Actions — lint runs on every pull request
