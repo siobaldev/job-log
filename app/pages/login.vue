@@ -2,7 +2,7 @@
 import { Label } from "reka-ui";
 import { configure, useForm } from "vee-validate";
 
-import { loginSchema } from "~/types/login.types";
+import { loginSchema } from "#shared/schemas/login";
 
 const { signIn } = useAuth();
 const router = useRouter();
