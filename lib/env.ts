@@ -6,6 +6,10 @@ const EnvSchema = z.object({
   NODE_ENV: z.string(),
   NUXT_PUBLIC_SUPABASE_URL: z.string(),
   NUXT_PUBLIC_SUPABASE_KEY: z.string(),
+  OPENROUTER_API_KEY: z.string(),
+  OPENROUTER_MODEL_OWNER: z.string(),
+  OPENROUTER_MODEL_DEMO: z.string(),
+  NUXT_PUBLIC_TURNSTILE_SITE_KEY: z.string(),
 });
 
 export type EnvSchema = z.infer<typeof EnvSchema>;

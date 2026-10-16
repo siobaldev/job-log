@@ -23,6 +23,10 @@ export default defineNuxtConfig({
     redirect: false,
   },
 
+  turnstile: {
+    siteKey: "",
+  },
+
   app: {
     head: {
       title: "Job Log",
@@ -40,5 +44,5 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ["@nuxt/fonts", "@nuxt/icon", "@nuxt/eslint", "@nuxtjs/supabase", "@nuxt/image"],
+  modules: ["@nuxt/fonts", "@nuxt/icon", "@nuxt/eslint", "@nuxtjs/supabase", "@nuxt/image", "@nuxtjs/turnstile", "@vueuse/nuxt"],
 });
