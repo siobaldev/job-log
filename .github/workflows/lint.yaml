@@ -11,6 +11,10 @@ jobs:
     env:
       NUXT_PUBLIC_SUPABASE_URL: https://supabase.co
       NUXT_PUBLIC_SUPABASE_KEY: placeholder-anon-key-here
+      NUXT_PUBLIC_TURNSTILE_SITE_KEY: placeholder-site-key
+      OPENROUTER_API_KEY: placeholder-openrouter-key
+      OPENROUTER_MODEL_OWNER: placeholder-model
+      OPENROUTER_MODEL_DEMO: placeholder-model
 
     steps:
       - uses: actions/checkout@v7

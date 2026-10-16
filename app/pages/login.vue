@@ -7,10 +7,12 @@ import { loginSchema } from "#shared/schemas/login";
 const { signIn } = useAuth();
 const router = useRouter();
 const submitError = ref("");
+const isLoading = ref(false);
 
-const { handleSubmit, defineField, errors, isSubmitting } = useForm({ validationSchema: loginSchema, initialValues: { email: "", password: "" } });
+const { handleSubmit, defineField, errors } = useForm({ validationSchema: loginSchema, initialValues: { email: "", password: "" } });
 const [email, emailAttrs] = defineField("email");
 const [password, passwordAttrs] = defineField("password");
+const turnstileToken = ref("");
 
 // Turn off VeeValidate's automatic validation triggers globally.
 // Goal: no errors while the user is still typing on a fresh form.
@@ -24,13 +26,17 @@ configure({
 });
 
 const onSubmit = handleSubmit(async (values) => {
+  isLoading.value = true;
   submitError.value = "";
   try {
-    await signIn(values.email, values.password);
+    await signIn(values.email, values.password, turnstileToken.value);
     router.push("/");
   }
   catch {
     submitError.value = "Incorrect email or password.";
+  }
+  finally {
+    isLoading.value = false;
   }
 });
 </script>
@@ -80,10 +86,16 @@ const onSubmit = handleSubmit(async (values) => {
         </p>
 
         <button
-          type="submit" :disabled="isSubmitting"
-          class="w-full mt-5 rounded-sm bg-btn-bg cursor-pointer text-text-inverse text-sm font-medium uppercase tracking-wider py-3.5 disabled:opacity-60"
+          type="submit" :disabled="isLoading || !turnstileToken"
+          class="w-full mt-5 rounded-sm bg-btn-bg text-text-inverse text-sm font-medium uppercase tracking-wider py-3.5 interactive-btn"
         >
-          {{ isSubmitting ? 'Signing in...' : 'Sign In' }}
+          <Icon
+            v-if="isLoading"
+            name="ph:circle-notch-bold"
+            class="size-4 animate-spin"
+            aria-hidden="true"
+          />
+          {{ isLoading ? 'Signing in...' : 'Sign In' }}
         </button>
       </form>
 
@@ -91,5 +103,6 @@ const onSubmit = handleSubmit(async (values) => {
         Private instance. Unauthorized access is restricted.
       </p>
     </div>
+    <NuxtTurnstile v-model="turnstileToken" :options="{ appearance: 'interaction-only' }" />
   </main>
 </template>

@@ -10,64 +10,82 @@ export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "14.5";
+    PostgrestVersion: "14.17";
   };
   public: {
     Tables: {
       jobs: {
         Row: {
+          application_instructions: string[];
           company: string | null;
           cover_letter: string | null;
           created_at: string | null;
+          description: string | null;
           email_body: string | null;
           email_subject: string | null;
+          experience: string | null;
           id: string;
+          is_demo: boolean;
           link: string | null;
           location: string | null;
-          requirements: string[] | null;
           salary: string | null;
+          schedule: string;
           status: string;
           summary: string | null;
+          tech_stack: string[] | null;
           title: string | null;
           tone: string | null;
+          user_id: string | null;
           want_cover_letter: boolean | null;
           want_email: boolean | null;
           work_mode: string | null;
         };
         Insert: {
+          application_instructions?: string[];
           company?: string | null;
           cover_letter?: string | null;
           created_at?: string | null;
+          description?: string | null;
           email_body?: string | null;
           email_subject?: string | null;
+          experience?: string | null;
           id?: string;
+          is_demo?: boolean;
           link?: string | null;
           location?: string | null;
-          requirements?: string[] | null;
           salary?: string | null;
+          schedule?: string;
           status?: string;
           summary?: string | null;
+          tech_stack?: string[] | null;
           title?: string | null;
           tone?: string | null;
+          user_id?: string | null;
           want_cover_letter?: boolean | null;
           want_email?: boolean | null;
           work_mode?: string | null;
         };
         Update: {
+          application_instructions?: string[];
           company?: string | null;
           cover_letter?: string | null;
           created_at?: string | null;
+          description?: string | null;
           email_body?: string | null;
           email_subject?: string | null;
+          experience?: string | null;
           id?: string;
+          is_demo?: boolean;
           link?: string | null;
           location?: string | null;
-          requirements?: string[] | null;
           salary?: string | null;
+          schedule?: string;
           status?: string;
           summary?: string | null;
+          tech_stack?: string[] | null;
           title?: string | null;
           tone?: string | null;
+          user_id?: string | null;
           want_cover_letter?: boolean | null;
           want_email?: boolean | null;
           work_mode?: string | null;
