@@ -1,5 +1,7 @@
 import type { JobInsert, JobListParams, JobRow, JobUpdate } from "~/types/job.types";
 
+import { ALL_JOBS } from "#shared/utils/all-job-status";
+
 export function useJobs() {
   const supabase = useSupabaseClient();
 
