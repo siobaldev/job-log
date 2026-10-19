@@ -3,7 +3,7 @@ import { toTypedSchema } from "@vee-validate/zod";
 import { configure, useForm } from "vee-validate";
 
 import type { Tone } from "#shared/schemas/draft";
-import type { JobEntry } from "~/types/job.types";
+import type { JobRow } from "~/types/job.types";
 
 import { extractFormSchema } from "#shared/schemas/extract";
 
@@ -42,13 +42,13 @@ const onSubmit = handleSubmit(async (values) => {
   let draftError = "";
   try {
     stage.value = "extracting";
-    const extracted = await $fetch<Omit<JobEntry, "id" | "status" | "created_at">>("/api/extract", {
+    const extracted = await $fetch<Omit<JobRow, "id" | "status" | "created_at">>("/api/extract", {
       method: "POST",
       body: { jobText: values.jobText },
     });
 
     // Draft fields to save together with the job
-    const draftFields: Pick<JobEntry, "email_subject" | "email_body" | "cover_letter"> = {};
+    const draftFields: Pick<JobRow, "email_subject" | "email_body" | "cover_letter"> = { email_subject: null, email_body: null, cover_letter: null };
 
     if (wantEmail.value || wantCoverLetter.value) {
       stage.value = "drafting";
@@ -86,7 +86,7 @@ const onSubmit = handleSubmit(async (values) => {
     if (draftError)
       toast.error("Job saved without a draft", `${draftError} You can generate it from the job page.`);
     else
-      toast.success("Job Saved", extracted.title);
+      toast.success("Job Saved", extracted.title ?? "Untitled Job");
     emit("jobAdded");
   }
   catch (err: any) {
