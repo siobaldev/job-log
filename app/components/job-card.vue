@@ -41,7 +41,7 @@ function salaryLine(job: JobSummary) {
       {{ job.work_mode }}
     </p>
 
-    <NuxtLink :to="`/jobs/${job.slug}`" class="interactive-btn flex w-full justify-center items-center gap-2 rounded-sm bg-btn-bg text-text-inverse px-4 py-2.5 font-medium uppercase">
+    <NuxtLink :to="`/job/${job.slug}`" class="interactive-btn flex w-full justify-center items-center gap-2 rounded-sm bg-btn-bg text-text-inverse px-4 py-2.5 font-medium uppercase">
       View <span aria-hidden="true">↗</span>
     </NuxtLink>
   </div>
