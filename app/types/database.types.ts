@@ -30,6 +30,7 @@ export type Database = {
           location: string | null;
           salary: string | null;
           schedule: string;
+          slug: string;
           status: string;
           summary: string | null;
           tech_stack: string[] | null;
@@ -55,6 +56,7 @@ export type Database = {
           location?: string | null;
           salary?: string | null;
           schedule?: string;
+          slug: string;
           status?: string;
           summary?: string | null;
           tech_stack?: string[] | null;
@@ -80,6 +82,7 @@ export type Database = {
           location?: string | null;
           salary?: string | null;
           schedule?: string;
+          slug?: string;
           status?: string;
           summary?: string | null;
           tech_stack?: string[] | null;
@@ -97,7 +100,7 @@ export type Database = {
       [_ in never]: never
     };
     Functions: {
-      [_ in never]: never
+      make_job_slug: { Args: { c: string; t: string }; Returns: string };
     };
     Enums: {
       [_ in never]: never

@@ -29,6 +29,9 @@ export default defineNuxtConfig({
 
   app: {
     head: {
+      htmlAttrs: {
+        lang: "en",
+      },
       title: "Job Log",
       meta: [
         { name: "description", content: "Track, organize, and manage your daily work tasks seamlessly. Monitor your project progress, log hours, and streamline your productivity with our intuitive job log." },

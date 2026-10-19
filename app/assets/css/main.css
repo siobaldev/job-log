@@ -36,9 +36,9 @@
   --color-badge-bg-all: #dac0a7;
   --color-badge-bg-saved: #afc8cc;
   --color-badge-bg-applied: #e9d28c;
-  --color-badge-bg-interview: #e7a868;
+  --color-badge-bg-interview: #ecbb89;
   --color-badge-bg-offer: #c9d9a8;
-  --color-badge-bg-rejected: #e3b4aa;
+  --color-badge-bg-rejected: #e7bdb4;
 
   /* Badge Text */
   --color-badge-text: var(--color-text-main);
