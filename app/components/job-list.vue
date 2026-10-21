@@ -4,12 +4,17 @@ import { PaginationNext, PaginationPrev, PaginationRoot } from "reka-ui";
 import type { JobSummary } from "~/types/job.types";
 
 import { ALL_JOBS } from "#shared/utils/all-job-status";
+import { STATUSES } from "#shared/utils/statuses";
+
+const FILTER_OPTIONS = [ALL_JOBS, ...STATUSES];
 
 const PAGE_SIZE = 10;
 
 const route = useRoute();
 const router = useRouter();
 const { fetchJobPage } = useJobs();
+
+defineExpose({ showNewest });
 
 // The URL is the source of truth
 const page = computed(() => Math.max(1, Number.parseInt(String(route.query.page ?? "1")) || 1));
@@ -27,11 +32,10 @@ function setQuery(patch: Record<string, string | number | undefined>, replace = 
   return replace ? router.replace({ query }) : router.push({ query });
 }
 
-const { data, status: loadStatus, refresh } = useAsyncData(
+const { data, status: loadStatus, refresh } = await useAsyncData(
   "jobs",
   () => fetchJobPage({ page: page.value, pageSize: PAGE_SIZE, status: filter.value, search: appliedSearch.value }),
   {
-    server: false, // the visitor's session lives in the browser
     watch: [page, filter, appliedSearch],
     default: () => ({ jobs: [] as JobSummary[], total: 0, counts: {} as Record<string, number> }),
   },
@@ -94,7 +98,6 @@ async function showNewest() {
   else
     await setQuery({ q: undefined, status: undefined, page: 1 });
 }
-defineExpose({ showNewest });
 </script>
 
 <template>
@@ -119,9 +122,12 @@ defineExpose({ showNewest });
           <Icon name="ph:x-bold" class="size-3.5 self-center" aria-hidden="true" />
         </button>
       </div>
-      <StatusFilter
-        :model-value="filter"
+
+      <StatusSelect
+        v-model="filter"
+        :options="FILTER_OPTIONS"
         :counts="counts"
+        aria-label="Filter jobs by application status"
         @update:model-value="setQuery({ status: $event, page: 1 })"
       />
     </div>
