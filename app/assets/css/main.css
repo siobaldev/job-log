@@ -36,9 +36,9 @@
   --color-badge-bg-all: #dac0a7;
   --color-badge-bg-saved: #afc8cc;
   --color-badge-bg-applied: #e9d28c;
-  --color-badge-bg-interview: #ecbb89;
+  --color-badge-bg-interview: #e7a868;
   --color-badge-bg-offer: #c9d9a8;
-  --color-badge-bg-rejected: #e7bdb4;
+  --color-badge-bg-rejected: #e3b4aa;
 
   /* Badge Text */
   --color-badge-text: var(--color-text-main);
@@ -145,6 +145,47 @@ body {
     &:disabled {
       cursor: not-allowed;
       opacity: 80%;
+    }
+  }
+
+  .job-prose {
+    & > * + * {
+      margin-top: calc(var(--spacing) * 3);
+    }
+
+    & > :first-child {
+      margin-top: 0;
+    }
+
+    & :is(h1, h2, h3, h4) {
+      margin-top: calc(var(--spacing) * 6);
+      font-size: var(--text-base);
+      line-height: var(--text-base--line-height);
+      font-weight: var(--font-weight-medium); /* was --font-weight-bold */
+      color: var(--color-text-main);
+    }
+
+    & ul {
+      list-style: disc;
+      padding-left: calc(var(--spacing) * 5);
+    }
+
+    & ol {
+      list-style: decimal;
+      padding-left: calc(var(--spacing) * 5);
+    }
+
+    & li + li {
+      margin-top: calc(var(--spacing) * 1);
+    }
+
+    & strong {
+      font-weight: var(--font-weight-medium);
+    }
+
+    & a {
+      text-decoration: underline;
+      word-break: break-all;
     }
   }
 }

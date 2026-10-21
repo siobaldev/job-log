@@ -23,7 +23,6 @@ export type Database = {
           description: string | null;
           email_body: string | null;
           email_subject: string | null;
-          experience: string | null;
           id: string;
           is_demo: boolean;
           link: string | null;
@@ -49,7 +48,6 @@ export type Database = {
           description?: string | null;
           email_body?: string | null;
           email_subject?: string | null;
-          experience?: string | null;
           id?: string;
           is_demo?: boolean;
           link?: string | null;
@@ -75,7 +73,6 @@ export type Database = {
           description?: string | null;
           email_body?: string | null;
           email_subject?: string | null;
-          experience?: string | null;
           id?: string;
           is_demo?: boolean;
           link?: string | null;
