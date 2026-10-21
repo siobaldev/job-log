@@ -2,7 +2,7 @@
 
 ## Description
 
-ob Log is a personal job-application tracker and automation tool. Paste
+Job Log is a personal job-application tracker and automation tool. Paste
 a job posting, and it extracts the company, role, location, salary, and
 requirements automatically. Every entry is tracked through a status
 pipeline (Saved → Applied → Interview → Offer/Rejected), with a tailored

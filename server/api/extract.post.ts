@@ -9,7 +9,7 @@ import { getAiProfile } from "../utils/profile";
 const systemInstruction = `Extract structured data from the pasted job posting. Respond with this exact JSON shape:
 { "isJobPosting": boolean, "company": string, "title": string, "location": string, "workMode": string, "schedule": string, "salary": string, "summary": string, "techStack": string[], "applicationInstructions": string[], "description": string, "link": string }
 Rules:
-- "isJobPosting": true only if the text is an actual job posting or job advertisement, including short hiring posts from social media. false for anything else, such as random text, articles, resumes, chat messages, or instructions. If false, use an empty string or empty array for every other field.
+- "isJobPosting": true only if the text is an actual job posting or job advertisement, including short hiring posts from social media. false for anything else, such as random text, articles, resumes, chat messages, instructions or just a link. If false, use an empty string or empty array for every other field.
 - "summary": 2-3 plain sentences on what the role involves day to day.
 - "location": city or region if stated, otherwise an empty string.
 - "workMode": Remote, Hybrid, or Onsite if stated, otherwise an empty string.
