@@ -3,6 +3,9 @@ import appToast from "./components/app-toast.vue";
 </script>
 
 <template>
-  <NuxtPage />
+  <NuxtLoadingIndicator color="var(--color-brand-brown)" :height="4" />
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
   <appToast />
-</template>r
+</template>
