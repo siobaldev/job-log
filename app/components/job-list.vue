@@ -47,6 +47,8 @@ const counts = computed(() => data.value.counts);
 const totalPages = computed(() => Math.max(1, Math.ceil(total.value / PAGE_SIZE)));
 const isFiltering = computed(() => !!appliedSearch.value || filter.value !== ALL_JOBS);
 
+const { $lenis } = useNuxtApp();
+
 // `search` follows every keystroke; the URL updates 300ms after typing stops
 const search = ref(appliedSearch.value);
 let searchTimer: ReturnType<typeof setTimeout> | undefined;
@@ -80,7 +82,10 @@ watch(visibility, (v) => {
 const listTop = ref<HTMLElement>();
 function goToPage(p: number) {
   setQuery({ page: p });
-  listTop.value?.scrollIntoView({ block: "start" });
+  if ($lenis && listTop.value)
+    $lenis.scrollTo(listTop.value, { offset: -24 });
+  else
+    listTop.value?.scrollIntoView({ block: "start" });
 }
 
 function clearSearch() {

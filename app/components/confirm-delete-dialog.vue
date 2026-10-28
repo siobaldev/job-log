@@ -18,7 +18,17 @@ defineProps<{
   error?: string;
 }>();
 const emit = defineEmits<{ confirm: [] }>();
+
+const { $lenis } = useNuxtApp();
+
 const open = defineModel<boolean>("open", { default: false });
+
+watch(open, (isOpen) => {
+  if (isOpen)
+    $lenis?.stop();
+  else
+    $lenis?.start();
+});
 </script>
 
 <template>
@@ -34,6 +44,7 @@ const open = defineModel<boolean>("open", { default: false });
 
       <DialogContent
         class="fixed top-1/2 left-1/2 z-50 w-[calc(100%-2rem)] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-sm border border-border-default bg-bg-elevated p-5 outline-none"
+        data-lenis-prevent
         @escape-key-down="(e: Event) => loading && e.preventDefault()"
         @interact-outside="(e: Event) => loading && e.preventDefault()"
       >
