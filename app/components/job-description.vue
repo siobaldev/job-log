@@ -7,5 +7,5 @@ const html = computed(() => renderMarkdown(props.source));
 </script>
 
 <template>
-  <div class="job-prose" v-html="html" />
+  <div class="job-prose overflow-hidden" v-html="html" />
 </template>
